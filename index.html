@@ -291,6 +291,10 @@
         }
 
         /* Values Accordion */
+        .accordion-button {
+            white-space: normal;
+        }
+
         .accordion-button:not(.collapsed) {
             background-color: var(--primary-color);
             color: white;
@@ -365,6 +369,101 @@
 
         img:not(.lightbox-img):hover {
             opacity: 0.9;
+        }
+        /* Vertical timeline */
+        .timeline {
+            position: relative;
+            padding-left: 20px;
+            margin-top: 30px;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 8px;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: var(--primary-color);
+            border-radius: 4px;
+        }
+
+        .timeline-item {
+            position: relative;
+            padding: 18px 20px;
+            margin-bottom: 24px;
+            margin-left: 20px;
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 6px 18px rgba(0,0,0,0.04);
+            border: 1px dashed var(--accent-color);
+        }
+
+        .timeline-dot::before {
+            content: '';
+            position: absolute;
+            left: -45px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 45px;
+            height: 5px;
+            background: var(--primary-color);
+        }
+
+        .timeline-dot {
+            position: absolute;
+            left: 10px;
+            top: 10px;
+            width: 40px;
+            height: 40px;
+            background: var(--accent-color);
+            border: 4px solid var(--primary-color);
+            border-radius: 50%;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        }
+
+        .timeline .duration {
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 8px;
+        }
+
+        .timeline ul {
+            padding-inline-start: 1.1rem;
+        }
+
+        .timeline li.lightbox-trigger {
+            cursor: pointer;
+            transition: background 0.2s ease, transform 0.2s ease;
+            padding: 8px 12px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            width: 100%;
+            gap: 0.4rem;
+        }
+
+        .timeline li.lightbox-trigger:hover {
+            background: rgba(255, 193, 7, 0.12);
+            transform: translateX(4px);
+        }
+
+        .timeline li.lightbox-trigger::before {
+            content: '\2022';
+            color: var(--primary-color);
+            font-size: 1.2rem;
+            line-height: 1;
+        }
+
+        .ready-status {
+            color: #c82333;
+            font-weight: 600;
+            cursor: pointer;
+            transition: color 0.2s ease;
+        }
+
+        .ready-status:hover {
+            text-decoration: underline;
         }
     </style>
 </head>
@@ -709,86 +808,182 @@
         </div>
     </section>
 
-    <!-- Fruits (Horizontal Cards) -->
+    <!-- Final Goals Section -->
     <section class="section-padding">
         <div class="container">
-            <h2 class="section-title" data-aos="fade-up">ثمار البرنامج التدريبي</h2>
-            <p class="mb-5 text-muted">يركز المشروع على تنمية مجموعة من المهارات والصفات الأساسية:</p>
-            <div class="row g-3">
-
-                <!-- Fruit Item -->
-                <div class="col-md-6" data-aos="fade-left">
-                    <div class="d-flex fruit-horizontal-card align-items-center">
-                        <div class="p-3 flex-grow-1">
-                            <h6 class="fw-bold mb-1">التحمل البدني</h6>
-                            <p class="small mb-0 text-muted">تنمية القدرة على التحمل والاستمرار في بذل الجهد.</p>
-                        </div>
-                        <div class="fruit-icon-wrapper">
-                            <i class="bi bi-lightning-charge"></i>
-                        </div>
-                    </div>
-                </div>
-
+            <h2 class="section-title text-center" data-aos="fade-up">الأهداف النهائية للبرنامج</h2>
+            <div class="row g-4 mt-4 align-items-start">
                 <div class="col-md-6" data-aos="fade-right">
-                    <div class="d-flex fruit-horizontal-card align-items-center">
-                        <div class="p-3 flex-grow-1">
-                            <h6 class="fw-bold mb-1">المرونة والقوة</h6>
-                            <p class="small mb-0 text-muted">زيادة المرونة واستطالة العضلات وتنمية القوة البدنية.</p>
-                        </div>
-                        <div class="fruit-icon-wrapper">
-                            <i class="bi bi-person-arms-up"></i>
+                    <div class="accordion" id="sportGoalsAccordion">
+                        <div class="accordion-item mb-3 border-0 shadow-sm">
+                            <h2 class="accordion-header" id="headingSportGoals">
+                                <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#collapseSportGoals" aria-expanded="false" aria-controls="collapseSportGoals">
+                                    أولًا: الأهداف الرياضية
+                                </button>
+                            </h2>
+                            <div id="collapseSportGoals" class="accordion-collapse collapse" aria-labelledby="headingSportGoals"
+                                data-bs-parent="#sportGoalsAccordion">
+                                <div class="accordion-body bg-white rounded shadow-sm">
+                                    <p class="text-muted">يهدف البرنامج - بإذن الله - إلى بناء متدرب يتمتع بمستوى متقدم من اللياقة والقدرات البدنية والمهارية، بحيث يصبح قادرًا على ممارسة رياضتي الجمباز والكاليسثينكس بمستوى متقدم، مع امتلاك أساس قوي من القوة والمرونة والتحكم الحركي.</p>
+                                    <p class="fw-bold mt-3">وبنهاية المسار التدريبي يكون المتدرب قادرًا على:</p>
+                                    <ul class="mb-0">
+                                        <li>امتلاك مستوى مرتفع من القوة النسبية باستخدام وزن الجسم.</li>
+                                        <li>تحقيق قدر متقدم من المرونة والحركة الوظيفية.</li>
+                                        <li>تطوير التوازن والتحكم الكامل بالجسم.</li>
+                                        <li>تنمية التوافق العضلي العصبي بدرجة عالية.</li>
+                                        <li>إتقان عدد من المهارات المتقدمة في الجمباز والكاليسثينكس.</li>
+                                        <li>أداء حركات مركبة تتطلب قوة وتوازنًا وتحكمًا عاليًا.</li>
+                                        <li>اكتساب القدرة على التعلم الذاتي للمهارات الرياضية الجديدة.</li>
+                                        <li>الوصول إلى مستوى رياضي يؤهله للمشاركة في العروض والفعاليات والبطولات ذات الصلة.</li>
+                                    </ul>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-
                 <div class="col-md-6" data-aos="fade-left">
-                    <div class="d-flex fruit-horizontal-card align-items-center">
-                        <div class="p-3 flex-grow-1">
-                            <h6 class="fw-bold mb-1">التوافق العضلي</h6>
-                            <p class="small mb-0 text-muted">تنمية التوافق العضلي العصبي والمهارات الحركية المعقدة.</p>
-                        </div>
-                        <div class="fruit-icon-wrapper">
-                            <i class="bi bi-puzzle"></i>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-md-6" data-aos="fade-right">
-                    <div class="d-flex fruit-horizontal-card align-items-center">
-                        <div class="p-3 flex-grow-1">
-                            <h6 class="fw-bold mb-1">التوازن والتحكم</h6>
-                            <p class="small mb-0 text-muted">تحسين التوازن والتحكم الكامل بمختلف أعضاء الجسم.</p>
-                        </div>
-                        <div class="fruit-icon-wrapper">
-                            <i class="bi bi-compass"></i>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-md-6" data-aos="fade-left">
-                    <div class="d-flex fruit-horizontal-card align-items-center">
-                        <div class="p-3 flex-grow-1">
-                            <h6 class="fw-bold mb-1">الانضباط والجلد</h6>
-                            <p class="small mb-0 text-muted">تنمية الانضباط الرياضي والتدريب على الصبر والمثابرة.</p>
-                        </div>
-                        <div class="fruit-icon-wrapper">
-                            <i class="bi bi-bullseye"></i>
+                    <div class="accordion" id="behaviorGoalsAccordion">
+                        <div class="accordion-item mb-3 border-0 shadow-sm">
+                            <h2 class="accordion-header" id="headingBehaviorGoals">
+                                <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#collapseBehaviorGoals" aria-expanded="false" aria-controls="collapseBehaviorGoals">
+                                    ثانيًا: الأهداف التربوية والسلوكية
+                                </button>
+                            </h2>
+                            <div id="collapseBehaviorGoals" class="accordion-collapse collapse" aria-labelledby="headingBehaviorGoals"
+                                data-bs-parent="#behaviorGoalsAccordion">
+                                <div class="accordion-body bg-white rounded shadow-sm">
+                                    <p class="text-muted">لا يقتصر البرنامج على تنمية الجانب البدني فحسب، بل يسعى إلى بناء شخصية متوازنة قادرة على تحمل المسؤولية ومواجهة التحديات.</p>
+                                    <p class="fw-bold mt-3">وبنهاية البرنامج يكون المتدرب قد اعتاد على:</p>
+                                    <ol class="mb-0">
+                                        <li>وضع الأهداف والسعي المنظم لتحقيقها.</li>
+                                        <li>الصبر والمثابرة وعدم الاستسلام عند مواجهة الصعوبات.</li>
+                                        <li>الانضباط والالتزام بالمواعيد والتعليمات.</li>
+                                        <li>تحمل المسؤولية تجاه نفسه وتجاه الآخرين.</li>
+                                        <li>احترام المدربين والزملاء والبيئة المحيطة.</li>
+                                        <li>العمل الجماعي والتعاون.</li>
+                                        <li>القيادة والمبادرة الإيجابية.</li>
+                                        <li>مواجهة الخوف والتحديات بثقة وشجاعة.</li>
+                                        <li>إدارة الوقت واستثماره فيما ينفع.</li>
+                                        <li>تحويل النجاح الرياضي إلى عادة حياتية قائمة على الاجتهاد والاستمرار.</li>
+                                        <li>ربط العلم بالعمل، بحيث يدرك أن التقدم الحقيقي لا يتحقق بالأماني وإنما بالجهد والممارسة.</li>
+                                    </ol>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
+            </div>
+        </div>
+    </section>
 
-                <div class="col-md-6" data-aos="fade-right">
-                    <div class="d-flex fruit-horizontal-card align-items-center">
-                        <div class="p-3 flex-grow-1">
-                            <h6 class="fw-bold mb-1">وضع الأهداف</h6>
-                            <p class="small mb-0 text-muted">التدريب على وضع الأهداف والسعي لتحقيقها بثقة.</p>
+    <!-- Training Path Timeline -->
+    <section class="section-padding bg-light">
+        <div class="container">
+            <h2 class="section-title text-center" data-aos="fade-up">المسار التدريبي والاهداف المرحلية</h2>
+            <div class="col-lg-10 mx-auto mt-3" data-aos="fade-up">
+                <blockquote class="blockquote text-muted">المدد المذكورة تقديرية وقد تختلف باختلاف عمر المتدرب والتزامه وقدراته الفردية.</blockquote>
+            </div>
+
+            <div class="row justify-content-center mt-4">
+                <div class="col-lg-8">
+                    <div class="timeline">
+
+                        <div class="timeline-item" data-aos="fade-up">
+                            <span class="timeline-dot"></span>
+                            <h5 class="mb-1">المرحلة الأولى — التأسيس البدني والحركي</h5>
+                            <div class="duration">المدة: 3 أشهر</div>
+                            <p class="mb-1">التركيز على:</p>
+                            <ul>
+                                <li>الإعداد البدني العام.</li>
+                                <li>تنمية القوة الأساسية.</li>
+                                <li>زيادة المرونة.</li>
+                                <li>تحسين التحمل.</li>
+                                <li>تقوية المفاصل والأوتار.</li>
+                                <li>تطوير التوازن والتوافق العصبي العضلي.</li>
+                            </ul>
                         </div>
-                        <div class="fruit-icon-wrapper">
-                            <i class="bi bi-flag-fill"></i>
+
+                        <div class="timeline-item" data-aos="fade-up" data-aos-delay="80">
+                            <span class="timeline-dot"></span>
+                            <h5 class="mb-1">المرحلة الثانية — المهارات الأساسية</h5>
+                            <div class="duration">المدة: 6 أشهر</div>
+                            <p class="mb-1">التركيز على:</p>
+                            <ul>
+                                <li class="lightbox-trigger" data-lightbox-src="https://images.squarespace-cdn.com/content/v1/52e3481ee4b0ce534c3c4ac8/77332dbf-8f7a-4925-9653-af6c0782a4a9/banana+handstand.png?format=1000w">Handstand</li>
+                                <li class="lightbox-trigger" data-lightbox-src="https://i.ytimg.com/vi/DVo4oNXrgZ4/maxresdefault.jpg">Back Flip</li>
+                                <li class="lightbox-trigger" data-lightbox-src="https://i.ytimg.com/vi/fMHMJNSonBQ/maxresdefault.jpg">Front Flip</li>
+                                <li class="lightbox-trigger" data-lightbox-src="https://live.staticflickr.com/6222/6347297699_1868c426e6_b.jpg">Side Flip</li>
+                                <li class="lightbox-trigger" data-lightbox-src="https://i.ytimg.com/vi/x35ObcfOuZU/maxresdefault.jpg">Back Handspring</li>
+                                <li class="lightbox-trigger" data-lightbox-src="https://i.ytimg.com/vi/ESwYr8iyWsI/hqdefault.jpg">Front Handspring</li>
+                                <li>مع الاستمرار في تطوير القوة والمرونة.</li>
+                            </ul>
                         </div>
+
+                        <div class="timeline-item" data-aos="fade-up" data-aos-delay="160">
+                            <span class="timeline-dot"></span>
+                            <h5 class="mb-1">المرحلة الثالثة — بناء القوة المهارية</h5>
+                            <div class="duration">المدة: 4 أشهر</div>
+                            <ul>
+                                <li class="lightbox-trigger" data-lightbox-src="https://www.andrealarosa.fit/wp-content/uploads/2022/12/IMG_1261F.jpg">تثبيت وإتقان Handstand</li>
+                                <li class="lightbox-trigger" data-lightbox-src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRrehkqOCY__u2IJCrli1CgXaFzMnVRvS1twJBcfoY5PHeryV_sjvq0wb0&s=10">Handstand Push-Up Progressions.</li>
+                                <li class="lightbox-trigger" data-lightbox-src="https://cdn.mos.cms.futurecdn.net/LdKxmJMYz7izy4B3o25Ro6-1200-80.jpg">Dragon Flag</li>
+                                <li class="lightbox-trigger" data-lightbox-src="https://www.onnit.com/cdn/shop/articles/HumanFlag2_0d72b3c4-e1b7-4b11-ac75-b98c8be9b136.jpg?v=1772221742&width=1260">Human Flag Progressions</li>
+                                <li class="lightbox-trigger" data-lightbox-src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTs_dK6sy7tjB5E5lgzr16ay5ohpcRgyaUpm7jNClOg33a3MkSOyiY-vdo&s=10">Advanced Core Training</li>
+                            </ul>
+                        </div>
+
+                        <div class="timeline-item" data-aos="fade-up" data-aos-delay="240">
+                            <span class="timeline-dot"></span>
+                            <h5 class="mb-1">المرحلة الرابعة — مهارات الرافعات (Levers)</h5>
+                            <div class="duration">المدة: 4 أشهر</div>
+                            <ul>
+                                <li class="lightbox-trigger" data-lightbox-src="https://ericflag.com/cdn/shop/articles/figure_back_lever.jpg">Back Lever</li>
+                                <li class="lightbox-trigger" data-lightbox-src="https://i.ytimg.com/vi/e_YwP0O34zM/maxresdefault.jpg">Front Lever</li>
+                                <li class="lightbox-trigger" data-lightbox-src="https://ericflag.com/cdn/shop/articles/front_lever_8025a89a-fbc4-485a-b2e5-f15ce88db828.jpg?crop=center&height=1200&v=1770648321&width=1200">Front Lever Pulls</li>
+                                <li class="lightbox-trigger" data-lightbox-src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQBnxXyEe03wYCMkRq_sSy6maFjkXTlrz0kMlKjRNQ28rB0xsyQpPgLpc_Z&s=10">Advanced Hanging Skills</li>
+                            </ul>
+                        </div>
+
+                        <div class="timeline-item" data-aos="fade-up" data-aos-delay="320">
+                            <span class="timeline-dot"></span>
+                            <h5 class="mb-1">المرحلة الخامسة — القوة الانفجارية</h5>
+                            <div class="duration">المدة: شهران</div>
+                            <ul>
+                                <li class="lightbox-trigger" data-lightbox-src="https://i0.wp.com/blog.calimove.com/wp-content/uploads/2023/03/mussss.jpg?resize=1200%2C675&ssl=1">Muscle-Up</li>
+                                <li class="lightbox-trigger" data-lightbox-src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSPczUtUh9Nl2SYRudq33f8WI0gRY4B8xKoBOTlo4hOy6YslPrteaEgvH4&s=10">Explosive Pull-Ups</li>
+                                <li class="lightbox-trigger" data-lightbox-src="https://kensuifitness.com/cdn/shop/files/ez-rope-outdoor-pullups.jpg?v=1746312674">Dynamic Bar Skills</li>
+                            </ul>
+                        </div>
+
+                        <div class="timeline-item" data-aos="fade-up" data-aos-delay="400">
+                            <span class="timeline-dot"></span>
+                            <h5 class="mb-1">المرحلة السادسة — المهارات المتقدمة</h5>
+                            <div class="duration">المدة: 3 أشهر</div>
+                            <ul>
+                                <li class="lightbox-trigger" data-lightbox-src="https://calisthenics-family.com/wp-content/uploads/2021/04/Tuck-Planche-progression-Tucked-Planche.png">Planche Progressions</li>
+                                <li class="lightbox-trigger" data-lightbox-src="https://gmb.io/wp-content/uploads/2015/03/Junior-Planche.jpg">Advanced Hand Balancing</li>
+                                <li class="lightbox-trigger" data-lightbox-src="https://i.pinimg.com/736x/2c/34/9e/2c349e93c0b6b061ef4c2ffd1b1aa13b.jpg">Skill Combinations</li>
+                                <li class="lightbox-trigger" data-lightbox-src="https://miro.medium.com/v2/resize:fit:1002/1*bm_IC37I0W2zxY56O63qpA.png">Static Strength Skills</li>
+                            </ul>
+                        </div>
+
+                        <div class="timeline-item" data-aos="fade-up" data-aos-delay="480">
+                            <span class="timeline-dot"></span>
+                            <h5 class="mb-1">المرحلة السابعة — الاحتراف والإتقان</h5>
+                            <p class="mb-1">التركيز على:</p>
+                            <ul>
+                                <li>دمج المهارات المكتسبة.</li>
+                                <li>بناء سلاسل حركية متكاملة.</li>
+                                <li>تطوير الأداء الفني.</li>
+                                <li>إعداد العروض الرياضية.</li>
+                                <li>المشاركة في البطولات والفعاليات.</li>
+                            </ul>
+                        </div>
+
                     </div>
                 </div>
-
             </div>
         </div>
     </section>
@@ -860,7 +1055,7 @@
                             <th>الأداة (بالإنجليزية)</th>
                             <th>الأداة (بالعربية)</th>
                             <th>الصورة</th>
-                            <th>المتوفر</th>
+                            <th>طريقة الطلب</th>
                             <th>المطلوب</th>
                             <th>سعر القطعة</th>
                             <th>الإجمالي</th>
@@ -871,28 +1066,30 @@
                         <!-- 1. ضروري -->
                         <tr>
                             <td>Crash Mat</td>
+                            <!-- https://www.trendyol.com/pd/siervotex/cocuk-jimnastik-minderi-pvc-spor-ve-oyun-minderi-darbe-emici-kaymaz-yuzey-60x120-cm-10-cm-p-1173068966?boutiqueId=61&merchantId=134524 -->
                             <td>مرتبة حماية ضد الصدمات</td>
                             <td><img src="https://m.media-amazon.com/images/I/71wvuODFQiL._AC_SL1500_.jpg"
                                     alt="Crash Mat" class="rounded border"
                                     style="width: 50px; height: 50px; object-fit: cover;"></td>
-                            <td class="text-danger">✗</td>
+                            <td>جاهز</td>
                             <td>1</td>
-                            <td>-</td>
-                            <td>-</td>
+                            <td>1400</td>
+                            <td>1400</td>
                             <td><span
                                     class="badge bg-danger-subtle text-danger border border-danger px-2 py-1.5">ضروري</span>
                             </td>
                         </tr>
                         <tr>
                             <td>Parallettes</td>
+                            <!-- https://www.trendyol.com/leyaton/ikili-uzun-paralel-bar-dips-bar-tall-parallettes-hc1616d-p-902009424?boutiqueId=61&merchantId=107585 -->
                             <td>متوازي تمارين</td>
                             <td><img src="https://i5.walmartimages.com/asr/f7651e67-a2ba-4430-8551-4f16ad395877.61657b5a5402b408463c1d2e2d6ffbfe.jpeg"
                                     alt="Parallettes" class="rounded border"
                                     style="width: 50px; height: 50px; object-fit: cover;"></td>
-                            <td class="text-danger">✗</td>
-                            <td>2</td>
-                            <td>-</td>
-                            <td>-</td>
+                            <td>عمولة</td>
+                            <td>1</td>
+                            <td>2900</td>
+                            <td>2900</td>
                             <td><span
                                     class="badge bg-danger-subtle text-danger border border-danger px-2 py-1.5">ضروري</span>
                             </td>
@@ -901,42 +1098,45 @@
                         <!-- 2. مهم -->
                         <tr>
                             <td>Pull-Up Bar</td>
+                            <!-- https://www.trendyol.com/reidan/3in1-buyuk-duvara-monte-duvar-barfiks-dips-pull-up-biceps-spor-egzersiz-barfix-aleti-fitness-bari-p-905169714?boutiqueId=61&merchantId=324866 -->
                             <td>عقلة تمارين</td>
                             <td><img src="https://m.media-amazon.com/images/I/71VDR-3MzVL._AC_SL1500_.jpg"
                                     alt="Pull-Up Bar" class="rounded border"
                                     style="width: 50px; height: 50px; object-fit: cover;"></td>
-                            <td class="text-danger">✗</td>
+                            <td>عمولة</td>
                             <td>1</td>
-                            <td>-</td>
-                            <td>-</td>
+                            <td>2900</td>
+                            <td>2900</td>
                             <td><span
                                     class="badge bg-warning-subtle text-warning-emphasis border border-warning px-2 py-1.5">مهم</span>
                             </td>
                         </tr>
                         <tr>
                             <td>Resistance Bands</td>
+                            <!-- https://www.trendyol.com/arkagan/direnc-bandi-seti-6-11-22-kg-3-lu-kas-gelistirme-pilates-direnc-lastigi-egzersiz-bantlari-p-1063800188?boutiqueId=61&merchantId=1184289 -->
                             <td>حبال المقاومة</td>
                             <td><img src="https://www.regent.gifts/product-images/21332-resistance-band-1.jpg"
                                     alt="Resistance Bands" class="rounded border"
                                     style="width: 50px; height: 50px; object-fit: cover;"></td>
-                            <td class="text-danger">✗</td>
+                            <td>جاهز</td>
                             <td>5</td>
-                            <td>-</td>
-                            <td>-</td>
+                            <td>750</td>
+                            <td>750</td>
                             <td><span
                                     class="badge bg-warning-subtle text-warning-emphasis border border-warning px-2 py-1.5">مهم</span>
                             </td>
                         </tr>
                         <tr>
                             <td>Tube Bands</td>
+                            <!-- https://www.trendyol.com/hepitop/cantali-lateks-16-parca-direnc-lastigi-seti-toplam-47-5-kg-agirlik-lastigi-kapi-arkasi-guc-bandi-p-1099356339?boutiqueId=61&merchantId=112824 -->
                             <td>حبال مقاومة أنبوبية</td>
                             <td><img src="https://i5.walmartimages.com/asr/c3df44c4-5e3f-461c-846a-b5d9a25ac80b_1.3f62695f59b58d4cefb5b897b14e72a7.jpeg"
                                     alt="Tube Bands" class="rounded border"
                                     style="width: 50px; height: 50px; object-fit: cover;"></td>
-                            <td class="text-danger">✗</td>
+                            <td>جاهز</td>
                             <td>5</td>
-                            <td>-</td>
-                            <td>-</td>
+                            <td>990</td>
+                            <td>990</td>
                             <td><span
                                     class="badge bg-warning-subtle text-warning-emphasis border border-warning px-2 py-1.5">مهم</span>
                             </td>
@@ -945,14 +1145,15 @@
                         <!-- 3. مؤجل -->
                         <tr>
                             <td>TRX</td>
+                            <!-- https://www.trendyol.com/ckspor/trx-training-set-x-tr-spor-seti-suspension-trainer-asilma-egzersiz-seti-p-780481982 -->
                             <td>حبال تعليق TRX</td>
                             <td><img src="https://www.trxtraining.eu/cdn/shop/articles/Screen_Shot_2023-02-01_at_9.54.13_AM.png?v=1675702496"
                                     alt="TRX" class="rounded border"
                                     style="width: 50px; height: 50px; object-fit: cover;"></td>
-                            <td class="text-danger">✗</td>
+                            <td>عمولة</td>
                             <td>1</td>
-                            <td>-</td>
-                            <td>-</td>
+                            <td>1100</td>
+                            <td>1100</td>
                             <td><span
                                     class="badge bg-success-subtle text-success border border-success px-2 py-1.5">مؤجل</span>
                             </td>
@@ -963,7 +1164,7 @@
                             <td><img src="https://homegymr.com/wp-content/uploads/2016/08/Man-Using-Ab-Wheel.jpg"
                                     alt="Ab wheel" class="rounded border"
                                     style="width: 50px; height: 50px; object-fit: cover;"></td>
-                            <td class="text-danger">✗</td>
+                            <td>عمولة</td>
                             <td>2</td>
                             <td>-</td>
                             <td>-</td>
@@ -977,7 +1178,7 @@
                             <td><img src="https://mirafit.co.uk/wp/wp-content/uploads/2023/06/half-kneeling-swing-with-Mirafit-Cast-Iron-Kettlebell-1024x683.jpg"
                                     alt="Kettlebell" class="rounded border"
                                     style="width: 50px; height: 50px; object-fit: cover;"></td>
-                            <td class="text-danger">✗</td>
+                            <td>عمولة</td>
                             <td>5</td>
                             <td>-</td>
                             <td>-</td>
@@ -988,7 +1189,7 @@
                     </tbody>
                 </table>
             </div>
-            <p class="text-center mt-3 text-muted small">(يتم استكمال الجدول بالأرقام الفعلية لاحقًا.)</p>
+            <p class="text-center mt-3 text-muted small">المجموع: 10000</p>
         </div>
     </section>
 
@@ -1081,44 +1282,80 @@
 
         // Global Lightbox logic for all images
         document.addEventListener('DOMContentLoaded', () => {
+            const openLightbox = (src) => {
+                const overlay = document.createElement('div');
+                overlay.className = 'lightbox-overlay';
+
+                const newImg = document.createElement('img');
+                newImg.src = src;
+                newImg.className = 'lightbox-img';
+
+                const closeBtn = document.createElement('span');
+                closeBtn.className = 'lightbox-close';
+                closeBtn.innerHTML = '&times;';
+
+                overlay.appendChild(newImg);
+                overlay.appendChild(closeBtn);
+                document.body.appendChild(overlay);
+
+                setTimeout(() => {
+                    overlay.classList.add('show');
+                }, 10);
+
+                const closeLightbox = () => {
+                    overlay.classList.remove('show');
+                    setTimeout(() => {
+                        overlay.remove();
+                    }, 300);
+                };
+
+                overlay.addEventListener('click', closeLightbox);
+                closeBtn.addEventListener('click', closeLightbox);
+                newImg.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                });
+            };
+
             const images = document.querySelectorAll('img');
             images.forEach(img => {
                 if (img.classList.contains('lightbox-img')) return;
 
-                img.addEventListener('click', (e) => {
-                    const overlay = document.createElement('div');
-                    overlay.className = 'lightbox-overlay';
-
-                    const newImg = document.createElement('img');
-                    newImg.src = img.src;
-                    newImg.className = 'lightbox-img';
-
-                    const closeBtn = document.createElement('span');
-                    closeBtn.className = 'lightbox-close';
-                    closeBtn.innerHTML = '&times;';
-
-                    overlay.appendChild(newImg);
-                    overlay.appendChild(closeBtn);
-                    document.body.appendChild(overlay);
-
-                    setTimeout(() => {
-                        overlay.classList.add('show');
-                    }, 10);
-
-                    const closeLightbox = () => {
-                        overlay.classList.remove('show');
-                        setTimeout(() => {
-                            overlay.remove();
-                        }, 300);
-                    };
-
-                    overlay.addEventListener('click', closeLightbox);
-                    closeBtn.addEventListener('click', closeLightbox);
-
-                    newImg.addEventListener('click', (e) => {
-                        e.stopPropagation();
-                    });
+                img.addEventListener('click', () => {
+                    openLightbox(img.src);
                 });
+            });
+
+            const timelineItems = document.querySelectorAll('.timeline li[data-lightbox-src]');
+            timelineItems.forEach(item => {
+                item.addEventListener('click', () => {
+                    const src = item.dataset.lightboxSrc;
+                    if (src) {
+                        openLightbox(src);
+                    }
+                });
+            });
+
+            const needsRows = document.querySelectorAll('table tbody tr');
+            needsRows.forEach(row => {
+                const requestCell = Array.from(row.cells).find(cell => cell.textContent.trim() === 'جاهز');
+                if (!requestCell) return;
+
+                let trendyolUrl = '';
+                row.childNodes.forEach(node => {
+                    if (node.nodeType === Node.COMMENT_NODE) {
+                        const match = node.textContent.match(/https?:\/\/[^\s]+/);
+                        if (match) {
+                            trendyolUrl = match[0].trim();
+                        }
+                    }
+                });
+
+                if (trendyolUrl) {
+                    requestCell.classList.add('ready-status');
+                    requestCell.addEventListener('click', () => {
+                        window.open(trendyolUrl, '_blank');
+                    });
+                }
             });
         });
     </script>
